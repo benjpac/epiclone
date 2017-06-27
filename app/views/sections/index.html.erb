@@ -1,2 +1,12 @@
-<h1>Sections#index</h1>
-<p>Find me in app/views/sections/index.html.erb</p>
+<h1>title e.g. rails</h1>
+
+<ul>
+  <% @sections.each do |section| %>
+    <li><%= link_to section.name, section_path(section) %></li>
+  <% end %>
+</ul>
+
+
+<hr>
+
+<%= link_to "New Section", new_section_path %>

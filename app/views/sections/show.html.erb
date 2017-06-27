@@ -1,0 +1,17 @@
+<%#<h1>Chapter: <%= @chapter.name %>
+
+<h2>Section: <%= @section.name %></h2>
+
+<h3>Lesson: <%= @section.name %></h3>
+
+<p><%= @section.content %></p>
+
+<p><%= link_to "Edit", edit_section_section_path(@section, @section) %></p>
+<p><%= link_to "Delete", section_section_path(@section, @section),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<p><%= link_to "Return to sections", sections_path %></p>
+
+<%= link_to "Previous", section_section_path(@section.previous()) %>
+<%= link_to "Next", section_section_path(@section.next()) %>

@@ -11,18 +11,21 @@ describe Lesson do
   
   context '#next' do
     it 'returns the lesson with the previous-highest number than the current lesson' do
-      current_lesson = Lesson.create(name:'lesson1', id:1)
-      next_lesson = Lesson.create(name:'lesson2', id:2)
-      binding.pry
-      expect(current_lesson.next).to eq next_lesson
+      chapter1 = Chapter.create(name: 'Rails')
+      section1 = chapter1.sections.create(name: 'Intro to Rails')
+      lesson1 = section1.lessons.create(name: 'Install Rails', content: 'Install rails and get to work!')
+      lesson2 = section1.lessons.create(name: 'fuck it', content: 'hard!')
+      expect(lesson1.next).to eq lesson2
     end
   end
 
   context '#previous' do
     it 'returns the lesson with the previous-highest number than the current lesson' do
-      current_lesson = Lesson.create({:name => 'lesson2', :id => 102})
-      previous_lesson = Lesson.create({:name => 'lesson1', :id => 101})
-      expect(current_lesson.previous).to eq previous_lesson
+      chapter1 = Chapter.create(name: 'Rails')
+      section1 = chapter1.sections.create(name: 'Intro to Rails')
+      lesson1 = section1.lessons.create(name: 'Install Rails', content: 'Install rails and get to work!')
+      lesson2 = section1.lessons.create(name: 'fuck it', content: 'hard!')
+      expect(lesson2.previous).to eq lesson1
     end
   end
 
