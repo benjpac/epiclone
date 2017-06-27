@@ -14,8 +14,9 @@ class LessonsController < ApplicationController
   end
 
   def create
+    # @chapter = Chapter.find(params[:chapter_id])
     @section = Section.find(params[:section_id])
-    @lesson = Lesson.new(lesson_params)
+    @lesson = @section.lessons.new(lesson_params)
     if @lesson.save
       redirect_to lessons_path
     else

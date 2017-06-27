@@ -1,0 +1,14 @@
+<h1>Chapter: <%= @chapter.name %>
+
+<h2>Section: <%= @section.name %></h2>
+
+<h3>Lesson: <%= @lesson.name %></h3>
+
+<p><%= @lesson.content %></p>
+
+<p><%= link_to "Edit", edit_section_lesson_path(@chapter, @section, @lesson) %></p>
+<p><%= link_to "Delete", chapter_section_lesson_path(@chapter, @section, @lesson),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<p><%= link_to "Return to sections", sections_path %></p>
