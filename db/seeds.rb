@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Lesson.destroy_all
+
+20.times do |index|
+  Lesson.create!(name: Faker::GameOfThrones.unique.city,
+                content: Faker::Lorem.sentence(20, false, 0).chop
+                )
+end
+
+p "Created #{Lesson.count} lessons"
