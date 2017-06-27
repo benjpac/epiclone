@@ -5,15 +5,18 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    @section = Section.find(params[:id])
   end
 
   def new
-    @lesson = Lesson.new
+    @section = Section.find(params[:section_id])
+    @lesson = @section.lessons.new
   end
 
   def create
+    @section = Section.find(params[:section_id])
     @lesson = Lesson.new(lesson_params)
-    if @lessons.save
+    if @lesson.save
       redirect_to lessons_path
     else
       render :new
@@ -40,7 +43,7 @@ class LessonsController < ApplicationController
   end
 
 private
-  def lessons_params
+  def lesson_params
     params.require(:lesson).permit(:name, :content)
   end
 
